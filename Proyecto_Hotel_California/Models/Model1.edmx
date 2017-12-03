@@ -1,0 +1,1011 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="HOTEL_CALIFORNIAModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="COD_CLI" />
+          </Key>
+          <Property Name="COD_CLI" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOM_CLI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APE_CLI" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COD_TIPO_DOC" Type="int" Nullable="false" />
+          <Property Name="NUM_DOC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="NUMERO_TARJETA" Type="varchar" MaxLength="16" />
+          <Property Name="FEC_VENC" Type="char" MaxLength="4" />
+          <Property Name="CVV" Type="varchar" MaxLength="4" />
+          <Property Name="COD_TIPO_TARJ" Type="int" />
+        </EntityType>
+        <EntityType Name="TB_EMPLEADO">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NOM_EMP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="APE_EMP" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COD_TIPO_DOC" Type="int" Nullable="false" />
+          <Property Name="NUM_DOC" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="COD_TIPO_EMP" Type="int" Nullable="false" />
+          <Property Name="FEC_NAC" Type="datetime2" Precision="0" />
+          <Property Name="FEC_CONTRATO" Type="datetime2" Precision="0" />
+          <Property Name="FEC_CESE" Type="datetime2" Precision="0" />
+          <Property Name="TELEFONO" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COD_SEDE" Type="int" Nullable="false" />
+          <Property Name="COD_EST_EMP" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_EMP">
+          <Key>
+            <PropertyRef Name="COD_EST_EMP" />
+          </Key>
+          <Property Name="COD_EST_EMP" Type="int" Nullable="false" />
+          <Property Name="DESC_EST" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_HAB">
+          <Key>
+            <PropertyRef Name="COD_EST_HAB" />
+          </Key>
+          <Property Name="COD_EST_HAB" Type="int" Nullable="false" />
+          <Property Name="DESC_EST" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_RES">
+          <Key>
+            <PropertyRef Name="COD_EST_RES" />
+          </Key>
+          <Property Name="COD_EST_RES" Type="int" Nullable="false" />
+          <Property Name="DESC_EST" Type="varchar" MaxLength="10" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_HABITACION">
+          <Key>
+            <PropertyRef Name="COD_HAB" />
+          </Key>
+          <Property Name="COD_HAB" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="NUM_HAB" Type="char" MaxLength="3" Nullable="false" />
+          <Property Name="COSTO_HAB" Type="decimal" Precision="5" Scale="1" Nullable="false" />
+          <Property Name="COD_TIPO_HAB" Type="int" Nullable="false" />
+          <Property Name="COD_SEDE" Type="int" Nullable="false" />
+          <Property Name="COD_EST_HAB" Type="int" Nullable="false" />
+          <Property Name="DESC_HAB" Type="varchar" MaxLength="310" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_PENALIDAD">
+          <Key>
+            <PropertyRef Name="DIAS_PENAL" />
+          </Key>
+          <Property Name="DIAS_PENAL" Type="int" Nullable="false" />
+          <Property Name="PROPORCION" Type="decimal" Precision="2" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_RESERVA">
+          <Key>
+            <PropertyRef Name="COD_RES" />
+          </Key>
+          <Property Name="COD_RES" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="COD_CLI" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="FEC_CREACION" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="FEC_RESERVA" Type="datetime2" Precision="0" Nullable="false" />
+          <Property Name="FEC_CANCEL" Type="datetime2" Precision="0" />
+          <Property Name="DIAS_RESERVA" Type="int" Nullable="false" />
+          <Property Name="COD_HAB" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="DIAS_PENAL" Type="int" />
+          <Property Name="MONTO_COBRADO" Type="decimal" Precision="5" Scale="1" />
+          <Property Name="FEC_INI" Type="datetime2" Precision="0" />
+          <Property Name="FEC_FIN" Type="datetime2" Precision="0" />
+          <Property Name="COD_EST_RES" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_SEDE">
+          <Key>
+            <PropertyRef Name="COD_SEDE" />
+          </Key>
+          <Property Name="COD_SEDE" Type="int" Nullable="false" />
+          <Property Name="DESC_SEDE" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="DIRECCION" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_DOC">
+          <Key>
+            <PropertyRef Name="COD_TIPO_DOC" />
+          </Key>
+          <Property Name="COD_TIPO_DOC" Type="int" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_EMP">
+          <Key>
+            <PropertyRef Name="COD_TIPO_EMP" />
+          </Key>
+          <Property Name="COD_TIPO_EMP" Type="int" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_HAB">
+          <Key>
+            <PropertyRef Name="COD_TIPO_HAB" />
+          </Key>
+          <Property Name="COD_TIPO_HAB" Type="int" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_TARJ">
+          <Key>
+            <PropertyRef Name="COD_TIPO_TARJ" />
+          </Key>
+          <Property Name="COD_TIPO_TARJ" Type="int" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="varchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TB_USUARIO">
+          <Key>
+            <PropertyRef Name="COD_USU" />
+          </Key>
+          <Property Name="COD_USU" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="NOM_USU" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CLAVE" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="EMAIL" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="COD_CLI" Type="varchar" MaxLength="10" />
+          <Property Name="COD_EMP" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <Association Name="FK__TB_CLIENT__COD_T__20C1E124">
+          <End Role="TB_TIPO_DOC" Type="Self.TB_TIPO_DOC" Multiplicity="1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_DOC">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENT__COD_T__21B6055D">
+          <End Role="TB_TIPO_TARJ" Type="Self.TB_TIPO_TARJ" Multiplicity="0..1" />
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_TARJ">
+              <PropertyRef Name="COD_TIPO_TARJ" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="COD_TIPO_TARJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_E__1B0907CE">
+          <End Role="TB_ESTADO_EMP" Type="Self.TB_ESTADO_EMP" Multiplicity="1" />
+          <End Role="TB_EMPLEADO" Type="Self.TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_EMP">
+              <PropertyRef Name="COD_EST_EMP" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_EST_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_S__1A14E395">
+          <End Role="TB_SEDE" Type="Self.TB_SEDE" Multiplicity="1" />
+          <End Role="TB_EMPLEADO" Type="Self.TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SEDE">
+              <PropertyRef Name="COD_SEDE" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_SEDE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_T__182C9B23">
+          <End Role="TB_TIPO_DOC" Type="Self.TB_TIPO_DOC" Multiplicity="1" />
+          <End Role="TB_EMPLEADO" Type="Self.TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_DOC">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_T__1920BF5C">
+          <End Role="TB_TIPO_EMP" Type="Self.TB_TIPO_EMP" Multiplicity="1" />
+          <End Role="TB_EMPLEADO" Type="Self.TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_EMP">
+              <PropertyRef Name="COD_TIPO_EMP" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_TIPO_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_E__300424B4">
+          <End Role="TB_ESTADO_HAB" Type="Self.TB_ESTADO_HAB" Multiplicity="1" />
+          <End Role="TB_HABITACION" Type="Self.TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_HAB">
+              <PropertyRef Name="COD_EST_HAB" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_EST_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_S__2F10007B">
+          <End Role="TB_SEDE" Type="Self.TB_SEDE" Multiplicity="1" />
+          <End Role="TB_HABITACION" Type="Self.TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SEDE">
+              <PropertyRef Name="COD_SEDE" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_SEDE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_T__2E1BDC42">
+          <End Role="TB_TIPO_HAB" Type="Self.TB_TIPO_HAB" Multiplicity="1" />
+          <End Role="TB_HABITACION" Type="Self.TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_HAB">
+              <PropertyRef Name="COD_TIPO_HAB" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_TIPO_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_C__37A5467C">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="1" />
+          <End Role="TB_RESERVA" Type="Self.TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="COD_CLI" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_E__3A81B327">
+          <End Role="TB_ESTADO_RES" Type="Self.TB_ESTADO_RES" Multiplicity="1" />
+          <End Role="TB_RESERVA" Type="Self.TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_RES">
+              <PropertyRef Name="COD_EST_RES" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_EST_RES" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_H__38996AB5">
+          <End Role="TB_HABITACION" Type="Self.TB_HABITACION" Multiplicity="1" />
+          <End Role="TB_RESERVA" Type="Self.TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_HABITACION">
+              <PropertyRef Name="COD_HAB" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__DIAS___398D8EEE">
+          <End Role="TB_PENALIDAD" Type="Self.TB_PENALIDAD" Multiplicity="0..1" />
+          <End Role="TB_RESERVA" Type="Self.TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PENALIDAD">
+              <PropertyRef Name="DIAS_PENAL" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="DIAS_PENAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_USUARI__COD_C__25869641">
+          <End Role="TB_CLIENTE" Type="Self.TB_CLIENTE" Multiplicity="0..1" />
+          <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="COD_CLI" />
+            </Principal>
+            <Dependent Role="TB_USUARIO">
+              <PropertyRef Name="COD_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_USUARI__COD_E__267ABA7A">
+          <End Role="TB_EMPLEADO" Type="Self.TB_EMPLEADO" Multiplicity="0..1" />
+          <End Role="TB_USUARIO" Type="Self.TB_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="TB_USUARIO">
+              <PropertyRef Name="COD_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HOTEL_CALIFORNIAModelStoreContainer">
+          <EntitySet Name="TB_CLIENTE" EntityType="Self.TB_CLIENTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_EMPLEADO" EntityType="Self.TB_EMPLEADO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ESTADO_EMP" EntityType="Self.TB_ESTADO_EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ESTADO_HAB" EntityType="Self.TB_ESTADO_HAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_ESTADO_RES" EntityType="Self.TB_ESTADO_RES" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_HABITACION" EntityType="Self.TB_HABITACION" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_PENALIDAD" EntityType="Self.TB_PENALIDAD" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_RESERVA" EntityType="Self.TB_RESERVA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_SEDE" EntityType="Self.TB_SEDE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TIPO_DOC" EntityType="Self.TB_TIPO_DOC" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TIPO_EMP" EntityType="Self.TB_TIPO_EMP" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TIPO_HAB" EntityType="Self.TB_TIPO_HAB" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_TIPO_TARJ" EntityType="Self.TB_TIPO_TARJ" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TB_USUARIO" EntityType="Self.TB_USUARIO" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__TB_CLIENT__COD_T__20C1E124" Association="Self.FK__TB_CLIENT__COD_T__20C1E124">
+            <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENT__COD_T__21B6055D" Association="Self.FK__TB_CLIENT__COD_T__21B6055D">
+            <End Role="TB_TIPO_TARJ" EntitySet="TB_TIPO_TARJ" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_E__1B0907CE" Association="Self.FK__TB_EMPLEA__COD_E__1B0907CE">
+            <End Role="TB_ESTADO_EMP" EntitySet="TB_ESTADO_EMP" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_S__1A14E395" Association="Self.FK__TB_EMPLEA__COD_S__1A14E395">
+            <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_T__182C9B23" Association="Self.FK__TB_EMPLEA__COD_T__182C9B23">
+            <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_T__1920BF5C" Association="Self.FK__TB_EMPLEA__COD_T__1920BF5C">
+            <End Role="TB_TIPO_EMP" EntitySet="TB_TIPO_EMP" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_E__300424B4" Association="Self.FK__TB_HABITA__COD_E__300424B4">
+            <End Role="TB_ESTADO_HAB" EntitySet="TB_ESTADO_HAB" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_S__2F10007B" Association="Self.FK__TB_HABITA__COD_S__2F10007B">
+            <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_T__2E1BDC42" Association="Self.FK__TB_HABITA__COD_T__2E1BDC42">
+            <End Role="TB_TIPO_HAB" EntitySet="TB_TIPO_HAB" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_C__37A5467C" Association="Self.FK__TB_RESERV__COD_C__37A5467C">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_E__3A81B327" Association="Self.FK__TB_RESERV__COD_E__3A81B327">
+            <End Role="TB_ESTADO_RES" EntitySet="TB_ESTADO_RES" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_H__38996AB5" Association="Self.FK__TB_RESERV__COD_H__38996AB5">
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__DIAS___398D8EEE" Association="Self.FK__TB_RESERV__DIAS___398D8EEE">
+            <End Role="TB_PENALIDAD" EntitySet="TB_PENALIDAD" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_USUARI__COD_C__25869641" Association="Self.FK__TB_USUARI__COD_C__25869641">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_USUARI__COD_E__267ABA7A" Association="Self.FK__TB_USUARI__COD_E__267ABA7A">
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+            <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HOTEL_CALIFORNIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="HOTEL_CALIFORNIAEntities4" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="TB_CLIENTE" EntityType="HOTEL_CALIFORNIAModel.TB_CLIENTE" />
+          <EntitySet Name="TB_EMPLEADO" EntityType="HOTEL_CALIFORNIAModel.TB_EMPLEADO" />
+          <EntitySet Name="TB_ESTADO_EMP" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP" />
+          <EntitySet Name="TB_ESTADO_HAB" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB" />
+          <EntitySet Name="TB_ESTADO_RES" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_RES" />
+          <EntitySet Name="TB_HABITACION" EntityType="HOTEL_CALIFORNIAModel.TB_HABITACION" />
+          <EntitySet Name="TB_PENALIDAD" EntityType="HOTEL_CALIFORNIAModel.TB_PENALIDAD" />
+          <EntitySet Name="TB_RESERVA" EntityType="HOTEL_CALIFORNIAModel.TB_RESERVA" />
+          <EntitySet Name="TB_SEDE" EntityType="HOTEL_CALIFORNIAModel.TB_SEDE" />
+          <EntitySet Name="TB_TIPO_DOC" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" />
+          <EntitySet Name="TB_TIPO_EMP" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_EMP" />
+          <EntitySet Name="TB_TIPO_HAB" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_HAB" />
+          <EntitySet Name="TB_TIPO_TARJ" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ" />
+          <EntitySet Name="TB_USUARIO" EntityType="HOTEL_CALIFORNIAModel.TB_USUARIO" />
+          <AssociationSet Name="FK__TB_CLIENT__COD_T__20C1E124" Association="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124">
+            <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_CLIENT__COD_T__21B6055D" Association="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D">
+            <End Role="TB_TIPO_TARJ" EntitySet="TB_TIPO_TARJ" />
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_C__37A5467C" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_USUARI__COD_C__25869641" Association="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641">
+            <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+            <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_E__1B0907CE" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE">
+            <End Role="TB_ESTADO_EMP" EntitySet="TB_ESTADO_EMP" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_S__1A14E395" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395">
+            <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_T__182C9B23" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23">
+            <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_EMPLEA__COD_T__1920BF5C" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C">
+            <End Role="TB_TIPO_EMP" EntitySet="TB_TIPO_EMP" />
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_USUARI__COD_E__267ABA7A" Association="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A">
+            <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+            <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_E__300424B4" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4">
+            <End Role="TB_ESTADO_HAB" EntitySet="TB_ESTADO_HAB" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_E__3A81B327" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327">
+            <End Role="TB_ESTADO_RES" EntitySet="TB_ESTADO_RES" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_S__2F10007B" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B">
+            <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_HABITA__COD_T__2E1BDC42" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42">
+            <End Role="TB_TIPO_HAB" EntitySet="TB_TIPO_HAB" />
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__COD_H__38996AB5" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5">
+            <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TB_RESERV__DIAS___398D8EEE" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE">
+            <End Role="TB_PENALIDAD" EntitySet="TB_PENALIDAD" />
+            <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="TB_CLIENTE">
+          <Key>
+            <PropertyRef Name="COD_CLI" />
+          </Key>
+          <Property Name="COD_CLI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_CLI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APE_CLI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+          <Property Name="NUM_DOC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="NUMERO_TARJETA" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+          <Property Name="FEC_VENC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+          <Property Name="CVV" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="COD_TIPO_TARJ" Type="Int32" />
+          <NavigationProperty Name="TB_TIPO_DOC" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124" FromRole="TB_CLIENTE" ToRole="TB_TIPO_DOC" />
+          <NavigationProperty Name="TB_TIPO_TARJ" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D" FromRole="TB_CLIENTE" ToRole="TB_TIPO_TARJ" />
+          <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C" FromRole="TB_CLIENTE" ToRole="TB_RESERVA" />
+          <NavigationProperty Name="TB_USUARIO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641" FromRole="TB_CLIENTE" ToRole="TB_USUARIO" />
+        </EntityType>
+        <EntityType Name="TB_EMPLEADO">
+          <Key>
+            <PropertyRef Name="COD_EMP" />
+          </Key>
+          <Property Name="COD_EMP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_EMP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="APE_EMP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+          <Property Name="NUM_DOC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="COD_TIPO_EMP" Type="Int32" Nullable="false" />
+          <Property Name="FEC_NAC" Type="DateTime" Precision="0" />
+          <Property Name="FEC_CONTRATO" Type="DateTime" Precision="0" />
+          <Property Name="FEC_CESE" Type="DateTime" Precision="0" />
+          <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+          <Property Name="COD_EST_EMP" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_ESTADO_EMP" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE" FromRole="TB_EMPLEADO" ToRole="TB_ESTADO_EMP" />
+          <NavigationProperty Name="TB_SEDE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395" FromRole="TB_EMPLEADO" ToRole="TB_SEDE" />
+          <NavigationProperty Name="TB_TIPO_DOC" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23" FromRole="TB_EMPLEADO" ToRole="TB_TIPO_DOC" />
+          <NavigationProperty Name="TB_TIPO_EMP" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C" FromRole="TB_EMPLEADO" ToRole="TB_TIPO_EMP" />
+          <NavigationProperty Name="TB_USUARIO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A" FromRole="TB_EMPLEADO" ToRole="TB_USUARIO" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_EMP">
+          <Key>
+            <PropertyRef Name="COD_EST_EMP" />
+          </Key>
+          <Property Name="COD_EST_EMP" Type="Int32" Nullable="false" />
+          <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE" FromRole="TB_ESTADO_EMP" ToRole="TB_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_HAB">
+          <Key>
+            <PropertyRef Name="COD_EST_HAB" />
+          </Key>
+          <Property Name="COD_EST_HAB" Type="Int32" Nullable="false" />
+          <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4" FromRole="TB_ESTADO_HAB" ToRole="TB_HABITACION" />
+        </EntityType>
+        <EntityType Name="TB_ESTADO_RES">
+          <Key>
+            <PropertyRef Name="COD_EST_RES" />
+          </Key>
+          <Property Name="COD_EST_RES" Type="Int32" Nullable="false" />
+          <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327" FromRole="TB_ESTADO_RES" ToRole="TB_RESERVA" />
+        </EntityType>
+        <EntityType Name="TB_HABITACION">
+          <Key>
+            <PropertyRef Name="COD_HAB" />
+          </Key>
+          <Property Name="COD_HAB" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_HAB" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+          <Property Name="COSTO_HAB" Type="Decimal" Nullable="false" Precision="5" Scale="1" />
+          <Property Name="COD_TIPO_HAB" Type="Int32" Nullable="false" />
+          <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+          <Property Name="COD_EST_HAB" Type="Int32" Nullable="false" />
+          <Property Name="DESC_HAB" Type="String" Nullable="false" MaxLength="310" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_ESTADO_HAB" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4" FromRole="TB_HABITACION" ToRole="TB_ESTADO_HAB" />
+          <NavigationProperty Name="TB_SEDE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B" FromRole="TB_HABITACION" ToRole="TB_SEDE" />
+          <NavigationProperty Name="TB_TIPO_HAB" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42" FromRole="TB_HABITACION" ToRole="TB_TIPO_HAB" />
+          <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5" FromRole="TB_HABITACION" ToRole="TB_RESERVA" />
+        </EntityType>
+        <EntityType Name="TB_PENALIDAD">
+          <Key>
+            <PropertyRef Name="DIAS_PENAL" />
+          </Key>
+          <Property Name="DIAS_PENAL" Type="Int32" Nullable="false" />
+          <Property Name="PROPORCION" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+          <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE" FromRole="TB_PENALIDAD" ToRole="TB_RESERVA" />
+        </EntityType>
+        <EntityType Name="TB_RESERVA">
+          <Key>
+            <PropertyRef Name="COD_RES" />
+          </Key>
+          <Property Name="COD_RES" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CLI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="FEC_CREACION" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FEC_RESERVA" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="FEC_CANCEL" Type="DateTime" Precision="0" />
+          <Property Name="DIAS_RESERVA" Type="Int32" Nullable="false" />
+          <Property Name="COD_HAB" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="DIAS_PENAL" Type="Int32" />
+          <Property Name="MONTO_COBRADO" Type="Decimal" Precision="5" Scale="1" />
+          <Property Name="FEC_INI" Type="DateTime" Precision="0" />
+          <Property Name="FEC_FIN" Type="DateTime" Precision="0" />
+          <Property Name="COD_EST_RES" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C" FromRole="TB_RESERVA" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_ESTADO_RES" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327" FromRole="TB_RESERVA" ToRole="TB_ESTADO_RES" />
+          <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5" FromRole="TB_RESERVA" ToRole="TB_HABITACION" />
+          <NavigationProperty Name="TB_PENALIDAD" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE" FromRole="TB_RESERVA" ToRole="TB_PENALIDAD" />
+        </EntityType>
+        <EntityType Name="TB_SEDE">
+          <Key>
+            <PropertyRef Name="COD_SEDE" />
+          </Key>
+          <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+          <Property Name="DESC_SEDE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395" FromRole="TB_SEDE" ToRole="TB_EMPLEADO" />
+          <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B" FromRole="TB_SEDE" ToRole="TB_HABITACION" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_DOC">
+          <Key>
+            <PropertyRef Name="COD_TIPO_DOC" />
+          </Key>
+          <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124" FromRole="TB_TIPO_DOC" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23" FromRole="TB_TIPO_DOC" ToRole="TB_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_EMP">
+          <Key>
+            <PropertyRef Name="COD_TIPO_EMP" />
+          </Key>
+          <Property Name="COD_TIPO_EMP" Type="Int32" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C" FromRole="TB_TIPO_EMP" ToRole="TB_EMPLEADO" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_HAB">
+          <Key>
+            <PropertyRef Name="COD_TIPO_HAB" />
+          </Key>
+          <Property Name="COD_TIPO_HAB" Type="Int32" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42" FromRole="TB_TIPO_HAB" ToRole="TB_HABITACION" />
+        </EntityType>
+        <EntityType Name="TB_TIPO_TARJ">
+          <Key>
+            <PropertyRef Name="COD_TIPO_TARJ" />
+          </Key>
+          <Property Name="COD_TIPO_TARJ" Type="Int32" Nullable="false" />
+          <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D" FromRole="TB_TIPO_TARJ" ToRole="TB_CLIENTE" />
+        </EntityType>
+        <EntityType Name="TB_USUARIO">
+          <Key>
+            <PropertyRef Name="COD_USU" />
+          </Key>
+          <Property Name="COD_USU" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+          <Property Name="NOM_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="COD_CLI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="COD_EMP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641" FromRole="TB_USUARIO" ToRole="TB_CLIENTE" />
+          <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A" FromRole="TB_USUARIO" ToRole="TB_EMPLEADO" />
+        </EntityType>
+        <Association Name="FK__TB_CLIENT__COD_T__20C1E124">
+          <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" Role="TB_TIPO_DOC" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_DOC">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_CLIENT__COD_T__21B6055D">
+          <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ" Role="TB_TIPO_TARJ" Multiplicity="0..1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_TARJ">
+              <PropertyRef Name="COD_TIPO_TARJ" />
+            </Principal>
+            <Dependent Role="TB_CLIENTE">
+              <PropertyRef Name="COD_TIPO_TARJ" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_C__37A5467C">
+          <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="COD_CLI" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_USUARI__COD_C__25869641">
+          <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="0..1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_USUARIO" Role="TB_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_CLIENTE">
+              <PropertyRef Name="COD_CLI" />
+            </Principal>
+            <Dependent Role="TB_USUARIO">
+              <PropertyRef Name="COD_CLI" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_E__1B0907CE">
+          <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP" Role="TB_ESTADO_EMP" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_EMP">
+              <PropertyRef Name="COD_EST_EMP" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_EST_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_S__1A14E395">
+          <End Type="HOTEL_CALIFORNIAModel.TB_SEDE" Role="TB_SEDE" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SEDE">
+              <PropertyRef Name="COD_SEDE" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_SEDE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_T__182C9B23">
+          <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" Role="TB_TIPO_DOC" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_DOC">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_TIPO_DOC" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_EMPLEA__COD_T__1920BF5C">
+          <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_EMP" Role="TB_TIPO_EMP" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_EMP">
+              <PropertyRef Name="COD_TIPO_EMP" />
+            </Principal>
+            <Dependent Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_TIPO_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_USUARI__COD_E__267ABA7A">
+          <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="0..1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_USUARIO" Role="TB_USUARIO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_EMPLEADO">
+              <PropertyRef Name="COD_EMP" />
+            </Principal>
+            <Dependent Role="TB_USUARIO">
+              <PropertyRef Name="COD_EMP" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_E__300424B4">
+          <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB" Role="TB_ESTADO_HAB" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_HAB">
+              <PropertyRef Name="COD_EST_HAB" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_EST_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_E__3A81B327">
+          <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_RES" Role="TB_ESTADO_RES" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_ESTADO_RES">
+              <PropertyRef Name="COD_EST_RES" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_EST_RES" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_S__2F10007B">
+          <End Type="HOTEL_CALIFORNIAModel.TB_SEDE" Role="TB_SEDE" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_SEDE">
+              <PropertyRef Name="COD_SEDE" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_SEDE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_HABITA__COD_T__2E1BDC42">
+          <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_HAB" Role="TB_TIPO_HAB" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_TIPO_HAB">
+              <PropertyRef Name="COD_TIPO_HAB" />
+            </Principal>
+            <Dependent Role="TB_HABITACION">
+              <PropertyRef Name="COD_TIPO_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__COD_H__38996AB5">
+          <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_HABITACION">
+              <PropertyRef Name="COD_HAB" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="COD_HAB" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TB_RESERV__DIAS___398D8EEE">
+          <End Type="HOTEL_CALIFORNIAModel.TB_PENALIDAD" Role="TB_PENALIDAD" Multiplicity="0..1" />
+          <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TB_PENALIDAD">
+              <PropertyRef Name="DIAS_PENAL" />
+            </Principal>
+            <Dependent Role="TB_RESERVA">
+              <PropertyRef Name="DIAS_PENAL" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HOTEL_CALIFORNIAModelStoreContainer" CdmEntityContainer="HOTEL_CALIFORNIAEntities4">
+          <EntitySetMapping Name="TB_CLIENTE">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_CLIENTE">
+              <MappingFragment StoreEntitySet="TB_CLIENTE">
+                <ScalarProperty Name="COD_TIPO_TARJ" ColumnName="COD_TIPO_TARJ" />
+                <ScalarProperty Name="CVV" ColumnName="CVV" />
+                <ScalarProperty Name="FEC_VENC" ColumnName="FEC_VENC" />
+                <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+                <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+                <ScalarProperty Name="APE_CLI" ColumnName="APE_CLI" />
+                <ScalarProperty Name="NOM_CLI" ColumnName="NOM_CLI" />
+                <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_EMPLEADO">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_EMPLEADO">
+              <MappingFragment StoreEntitySet="TB_EMPLEADO">
+                <ScalarProperty Name="COD_EST_EMP" ColumnName="COD_EST_EMP" />
+                <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+                <ScalarProperty Name="FEC_CESE" ColumnName="FEC_CESE" />
+                <ScalarProperty Name="FEC_CONTRATO" ColumnName="FEC_CONTRATO" />
+                <ScalarProperty Name="FEC_NAC" ColumnName="FEC_NAC" />
+                <ScalarProperty Name="COD_TIPO_EMP" ColumnName="COD_TIPO_EMP" />
+                <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+                <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+                <ScalarProperty Name="APE_EMP" ColumnName="APE_EMP" />
+                <ScalarProperty Name="NOM_EMP" ColumnName="NOM_EMP" />
+                <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ESTADO_EMP">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP">
+              <MappingFragment StoreEntitySet="TB_ESTADO_EMP">
+                <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+                <ScalarProperty Name="COD_EST_EMP" ColumnName="COD_EST_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ESTADO_HAB">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB">
+              <MappingFragment StoreEntitySet="TB_ESTADO_HAB">
+                <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+                <ScalarProperty Name="COD_EST_HAB" ColumnName="COD_EST_HAB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_ESTADO_RES">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_RES">
+              <MappingFragment StoreEntitySet="TB_ESTADO_RES">
+                <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+                <ScalarProperty Name="COD_EST_RES" ColumnName="COD_EST_RES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_HABITACION">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_HABITACION">
+              <MappingFragment StoreEntitySet="TB_HABITACION">
+                <ScalarProperty Name="DESC_HAB" ColumnName="DESC_HAB" />
+                <ScalarProperty Name="COD_EST_HAB" ColumnName="COD_EST_HAB" />
+                <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+                <ScalarProperty Name="COD_TIPO_HAB" ColumnName="COD_TIPO_HAB" />
+                <ScalarProperty Name="COSTO_HAB" ColumnName="COSTO_HAB" />
+                <ScalarProperty Name="NUM_HAB" ColumnName="NUM_HAB" />
+                <ScalarProperty Name="COD_HAB" ColumnName="COD_HAB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_PENALIDAD">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_PENALIDAD">
+              <MappingFragment StoreEntitySet="TB_PENALIDAD">
+                <ScalarProperty Name="PROPORCION" ColumnName="PROPORCION" />
+                <ScalarProperty Name="DIAS_PENAL" ColumnName="DIAS_PENAL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_RESERVA">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_RESERVA">
+              <MappingFragment StoreEntitySet="TB_RESERVA">
+                <ScalarProperty Name="COD_EST_RES" ColumnName="COD_EST_RES" />
+                <ScalarProperty Name="FEC_FIN" ColumnName="FEC_FIN" />
+                <ScalarProperty Name="FEC_INI" ColumnName="FEC_INI" />
+                <ScalarProperty Name="MONTO_COBRADO" ColumnName="MONTO_COBRADO" />
+                <ScalarProperty Name="DIAS_PENAL" ColumnName="DIAS_PENAL" />
+                <ScalarProperty Name="COD_HAB" ColumnName="COD_HAB" />
+                <ScalarProperty Name="DIAS_RESERVA" ColumnName="DIAS_RESERVA" />
+                <ScalarProperty Name="FEC_CANCEL" ColumnName="FEC_CANCEL" />
+                <ScalarProperty Name="FEC_RESERVA" ColumnName="FEC_RESERVA" />
+                <ScalarProperty Name="FEC_CREACION" ColumnName="FEC_CREACION" />
+                <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+                <ScalarProperty Name="COD_RES" ColumnName="COD_RES" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_SEDE">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_SEDE">
+              <MappingFragment StoreEntitySet="TB_SEDE">
+                <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+                <ScalarProperty Name="DESC_SEDE" ColumnName="DESC_SEDE" />
+                <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TIPO_DOC">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_DOC">
+              <MappingFragment StoreEntitySet="TB_TIPO_DOC">
+                <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+                <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TIPO_EMP">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_EMP">
+              <MappingFragment StoreEntitySet="TB_TIPO_EMP">
+                <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+                <ScalarProperty Name="COD_TIPO_EMP" ColumnName="COD_TIPO_EMP" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TIPO_HAB">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_HAB">
+              <MappingFragment StoreEntitySet="TB_TIPO_HAB">
+                <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+                <ScalarProperty Name="COD_TIPO_HAB" ColumnName="COD_TIPO_HAB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_TIPO_TARJ">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ">
+              <MappingFragment StoreEntitySet="TB_TIPO_TARJ">
+                <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+                <ScalarProperty Name="COD_TIPO_TARJ" ColumnName="COD_TIPO_TARJ" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TB_USUARIO">
+            <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_USUARIO">
+              <MappingFragment StoreEntitySet="TB_USUARIO">
+                <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+                <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+                <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+                <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+                <ScalarProperty Name="NOM_USU" ColumnName="NOM_USU" />
+                <ScalarProperty Name="COD_USU" ColumnName="COD_USU" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

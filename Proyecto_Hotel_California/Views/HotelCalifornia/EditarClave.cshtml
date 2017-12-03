@@ -1,0 +1,82 @@
+﻿@model ClaveModel
+
+@{
+    ViewBag.Title = "EditarClave";
+}
+
+<h2>Cambiar Contraseña</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.claveAnterior, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.claveAnterior, new { htmlAttributes = new { @class = "form-control", @id = "idClave0", @type = "password", @required = "required",
+                    @maxlength = "20", @minlength = "8", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.claveAnterior, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.claveNueva, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.claveNueva, new { htmlAttributes = new { @class = "form-control", @id = "idClave1", @type = "password", @required = "required",
+                    @maxlength = "20", @minlength = "8", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.claveNueva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Repetir Contraseña Nueva</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" id="idClave2" required="required" maxlength="20" minlength="8"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" />
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar cambio" onclick="return validarDatosClaves()" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Salir", "PaginaPrincipal")
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+
+    if ('@ViewBag.mensaje' != "") {
+        alert('@ViewBag.mensaje');
+
+        document.getElementById("idClave0").value = "";
+        document.getElementById("idClave1").value = "";
+    }
+
+    function setMessage(txt, tipo) {
+        switch (tipo) {
+            default:
+                try { txt.setCustomValidity('') }
+                catch (e) { }
+                break;
+
+            case "espacios":
+                txt.setCustomValidity('No usar espacios');
+                break;
+         }
+    }
+
+</script>
+
+}

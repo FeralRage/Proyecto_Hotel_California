@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HOTEL_CALIFORNIAModelStoreContainer" CdmEntityContainer="HOTEL_CALIFORNIAEntities4">
+    <EntitySetMapping Name="TB_CLIENTE">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_CLIENTE">
+        <MappingFragment StoreEntitySet="TB_CLIENTE">
+          <ScalarProperty Name="COD_TIPO_TARJ" ColumnName="COD_TIPO_TARJ" />
+          <ScalarProperty Name="CVV" ColumnName="CVV" />
+          <ScalarProperty Name="FEC_VENC" ColumnName="FEC_VENC" />
+          <ScalarProperty Name="NUMERO_TARJETA" ColumnName="NUMERO_TARJETA" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+          <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+          <ScalarProperty Name="APE_CLI" ColumnName="APE_CLI" />
+          <ScalarProperty Name="NOM_CLI" ColumnName="NOM_CLI" />
+          <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_EMPLEADO">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_EMPLEADO">
+        <MappingFragment StoreEntitySet="TB_EMPLEADO">
+          <ScalarProperty Name="COD_EST_EMP" ColumnName="COD_EST_EMP" />
+          <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="TELEFONO" ColumnName="TELEFONO" />
+          <ScalarProperty Name="FEC_CESE" ColumnName="FEC_CESE" />
+          <ScalarProperty Name="FEC_CONTRATO" ColumnName="FEC_CONTRATO" />
+          <ScalarProperty Name="FEC_NAC" ColumnName="FEC_NAC" />
+          <ScalarProperty Name="COD_TIPO_EMP" ColumnName="COD_TIPO_EMP" />
+          <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+          <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+          <ScalarProperty Name="APE_EMP" ColumnName="APE_EMP" />
+          <ScalarProperty Name="NOM_EMP" ColumnName="NOM_EMP" />
+          <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESTADO_EMP">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP">
+        <MappingFragment StoreEntitySet="TB_ESTADO_EMP">
+          <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+          <ScalarProperty Name="COD_EST_EMP" ColumnName="COD_EST_EMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESTADO_HAB">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB">
+        <MappingFragment StoreEntitySet="TB_ESTADO_HAB">
+          <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+          <ScalarProperty Name="COD_EST_HAB" ColumnName="COD_EST_HAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_ESTADO_RES">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_ESTADO_RES">
+        <MappingFragment StoreEntitySet="TB_ESTADO_RES">
+          <ScalarProperty Name="DESC_EST" ColumnName="DESC_EST" />
+          <ScalarProperty Name="COD_EST_RES" ColumnName="COD_EST_RES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_HABITACION">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_HABITACION">
+        <MappingFragment StoreEntitySet="TB_HABITACION">
+          <ScalarProperty Name="DESC_HAB" ColumnName="DESC_HAB" />
+          <ScalarProperty Name="COD_EST_HAB" ColumnName="COD_EST_HAB" />
+          <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+          <ScalarProperty Name="COD_TIPO_HAB" ColumnName="COD_TIPO_HAB" />
+          <ScalarProperty Name="COSTO_HAB" ColumnName="COSTO_HAB" />
+          <ScalarProperty Name="NUM_HAB" ColumnName="NUM_HAB" />
+          <ScalarProperty Name="COD_HAB" ColumnName="COD_HAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_PENALIDAD">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_PENALIDAD">
+        <MappingFragment StoreEntitySet="TB_PENALIDAD">
+          <ScalarProperty Name="PROPORCION" ColumnName="PROPORCION" />
+          <ScalarProperty Name="DIAS_PENAL" ColumnName="DIAS_PENAL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_RESERVA">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_RESERVA">
+        <MappingFragment StoreEntitySet="TB_RESERVA">
+          <ScalarProperty Name="COD_EST_RES" ColumnName="COD_EST_RES" />
+          <ScalarProperty Name="FEC_FIN" ColumnName="FEC_FIN" />
+          <ScalarProperty Name="FEC_INI" ColumnName="FEC_INI" />
+          <ScalarProperty Name="MONTO_COBRADO" ColumnName="MONTO_COBRADO" />
+          <ScalarProperty Name="DIAS_PENAL" ColumnName="DIAS_PENAL" />
+          <ScalarProperty Name="COD_HAB" ColumnName="COD_HAB" />
+          <ScalarProperty Name="DIAS_RESERVA" ColumnName="DIAS_RESERVA" />
+          <ScalarProperty Name="FEC_CANCEL" ColumnName="FEC_CANCEL" />
+          <ScalarProperty Name="FEC_RESERVA" ColumnName="FEC_RESERVA" />
+          <ScalarProperty Name="FEC_CREACION" ColumnName="FEC_CREACION" />
+          <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+          <ScalarProperty Name="COD_RES" ColumnName="COD_RES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_SEDE">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_SEDE">
+        <MappingFragment StoreEntitySet="TB_SEDE">
+          <ScalarProperty Name="DIRECCION" ColumnName="DIRECCION" />
+          <ScalarProperty Name="DESC_SEDE" ColumnName="DESC_SEDE" />
+          <ScalarProperty Name="COD_SEDE" ColumnName="COD_SEDE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_DOC">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_DOC">
+        <MappingFragment StoreEntitySet="TB_TIPO_DOC">
+          <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+          <ScalarProperty Name="COD_TIPO_DOC" ColumnName="COD_TIPO_DOC" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_EMP">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_EMP">
+        <MappingFragment StoreEntitySet="TB_TIPO_EMP">
+          <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+          <ScalarProperty Name="COD_TIPO_EMP" ColumnName="COD_TIPO_EMP" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_HAB">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_HAB">
+        <MappingFragment StoreEntitySet="TB_TIPO_HAB">
+          <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+          <ScalarProperty Name="COD_TIPO_HAB" ColumnName="COD_TIPO_HAB" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_TIPO_TARJ">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ">
+        <MappingFragment StoreEntitySet="TB_TIPO_TARJ">
+          <ScalarProperty Name="DESC_TIPO" ColumnName="DESC_TIPO" />
+          <ScalarProperty Name="COD_TIPO_TARJ" ColumnName="COD_TIPO_TARJ" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TB_USUARIO">
+      <EntityTypeMapping TypeName="HOTEL_CALIFORNIAModel.TB_USUARIO">
+        <MappingFragment StoreEntitySet="TB_USUARIO">
+          <ScalarProperty Name="COD_EMP" ColumnName="COD_EMP" />
+          <ScalarProperty Name="COD_CLI" ColumnName="COD_CLI" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="CLAVE" ColumnName="CLAVE" />
+          <ScalarProperty Name="NOM_USU" ColumnName="NOM_USU" />
+          <ScalarProperty Name="COD_USU" ColumnName="COD_USU" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

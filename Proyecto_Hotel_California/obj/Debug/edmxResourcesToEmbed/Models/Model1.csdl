@@ -1,0 +1,427 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HOTEL_CALIFORNIAModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="HOTEL_CALIFORNIAEntities4" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="TB_CLIENTE" EntityType="HOTEL_CALIFORNIAModel.TB_CLIENTE" />
+    <EntitySet Name="TB_EMPLEADO" EntityType="HOTEL_CALIFORNIAModel.TB_EMPLEADO" />
+    <EntitySet Name="TB_ESTADO_EMP" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP" />
+    <EntitySet Name="TB_ESTADO_HAB" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB" />
+    <EntitySet Name="TB_ESTADO_RES" EntityType="HOTEL_CALIFORNIAModel.TB_ESTADO_RES" />
+    <EntitySet Name="TB_HABITACION" EntityType="HOTEL_CALIFORNIAModel.TB_HABITACION" />
+    <EntitySet Name="TB_PENALIDAD" EntityType="HOTEL_CALIFORNIAModel.TB_PENALIDAD" />
+    <EntitySet Name="TB_RESERVA" EntityType="HOTEL_CALIFORNIAModel.TB_RESERVA" />
+    <EntitySet Name="TB_SEDE" EntityType="HOTEL_CALIFORNIAModel.TB_SEDE" />
+    <EntitySet Name="TB_TIPO_DOC" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" />
+    <EntitySet Name="TB_TIPO_EMP" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_EMP" />
+    <EntitySet Name="TB_TIPO_HAB" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_HAB" />
+    <EntitySet Name="TB_TIPO_TARJ" EntityType="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ" />
+    <EntitySet Name="TB_USUARIO" EntityType="HOTEL_CALIFORNIAModel.TB_USUARIO" />
+    <AssociationSet Name="FK__TB_CLIENT__COD_T__20C1E124" Association="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124">
+      <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+      <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_CLIENT__COD_T__21B6055D" Association="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D">
+      <End Role="TB_TIPO_TARJ" EntitySet="TB_TIPO_TARJ" />
+      <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_RESERV__COD_C__37A5467C" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C">
+      <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+      <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_USUARI__COD_C__25869641" Association="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641">
+      <End Role="TB_CLIENTE" EntitySet="TB_CLIENTE" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_EMPLEA__COD_E__1B0907CE" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE">
+      <End Role="TB_ESTADO_EMP" EntitySet="TB_ESTADO_EMP" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_EMPLEA__COD_S__1A14E395" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395">
+      <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_EMPLEA__COD_T__182C9B23" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23">
+      <End Role="TB_TIPO_DOC" EntitySet="TB_TIPO_DOC" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_EMPLEA__COD_T__1920BF5C" Association="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C">
+      <End Role="TB_TIPO_EMP" EntitySet="TB_TIPO_EMP" />
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_USUARI__COD_E__267ABA7A" Association="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A">
+      <End Role="TB_EMPLEADO" EntitySet="TB_EMPLEADO" />
+      <End Role="TB_USUARIO" EntitySet="TB_USUARIO" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_HABITA__COD_E__300424B4" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4">
+      <End Role="TB_ESTADO_HAB" EntitySet="TB_ESTADO_HAB" />
+      <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_RESERV__COD_E__3A81B327" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327">
+      <End Role="TB_ESTADO_RES" EntitySet="TB_ESTADO_RES" />
+      <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_HABITA__COD_S__2F10007B" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B">
+      <End Role="TB_SEDE" EntitySet="TB_SEDE" />
+      <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_HABITA__COD_T__2E1BDC42" Association="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42">
+      <End Role="TB_TIPO_HAB" EntitySet="TB_TIPO_HAB" />
+      <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_RESERV__COD_H__38996AB5" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5">
+      <End Role="TB_HABITACION" EntitySet="TB_HABITACION" />
+      <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+    </AssociationSet>
+    <AssociationSet Name="FK__TB_RESERV__DIAS___398D8EEE" Association="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE">
+      <End Role="TB_PENALIDAD" EntitySet="TB_PENALIDAD" />
+      <End Role="TB_RESERVA" EntitySet="TB_RESERVA" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="TB_CLIENTE">
+    <Key>
+      <PropertyRef Name="COD_CLI" />
+    </Key>
+    <Property Name="COD_CLI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOM_CLI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APE_CLI" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+    <Property Name="NUM_DOC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="NUMERO_TARJETA" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="FEC_VENC" Type="String" MaxLength="4" FixedLength="true" Unicode="false" />
+    <Property Name="CVV" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+    <Property Name="COD_TIPO_TARJ" Type="Int32" />
+    <NavigationProperty Name="TB_TIPO_DOC" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124" FromRole="TB_CLIENTE" ToRole="TB_TIPO_DOC" />
+    <NavigationProperty Name="TB_TIPO_TARJ" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D" FromRole="TB_CLIENTE" ToRole="TB_TIPO_TARJ" />
+    <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C" FromRole="TB_CLIENTE" ToRole="TB_RESERVA" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641" FromRole="TB_CLIENTE" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_EMPLEADO">
+    <Key>
+      <PropertyRef Name="COD_EMP" />
+    </Key>
+    <Property Name="COD_EMP" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NOM_EMP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="APE_EMP" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+    <Property Name="NUM_DOC" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="COD_TIPO_EMP" Type="Int32" Nullable="false" />
+    <Property Name="FEC_NAC" Type="DateTime" Precision="0" />
+    <Property Name="FEC_CONTRATO" Type="DateTime" Precision="0" />
+    <Property Name="FEC_CESE" Type="DateTime" Precision="0" />
+    <Property Name="TELEFONO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="COD_EST_EMP" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_ESTADO_EMP" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE" FromRole="TB_EMPLEADO" ToRole="TB_ESTADO_EMP" />
+    <NavigationProperty Name="TB_SEDE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395" FromRole="TB_EMPLEADO" ToRole="TB_SEDE" />
+    <NavigationProperty Name="TB_TIPO_DOC" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23" FromRole="TB_EMPLEADO" ToRole="TB_TIPO_DOC" />
+    <NavigationProperty Name="TB_TIPO_EMP" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C" FromRole="TB_EMPLEADO" ToRole="TB_TIPO_EMP" />
+    <NavigationProperty Name="TB_USUARIO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A" FromRole="TB_EMPLEADO" ToRole="TB_USUARIO" />
+  </EntityType>
+  <EntityType Name="TB_ESTADO_EMP">
+    <Key>
+      <PropertyRef Name="COD_EST_EMP" />
+    </Key>
+    <Property Name="COD_EST_EMP" Type="Int32" Nullable="false" />
+    <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_E__1B0907CE" FromRole="TB_ESTADO_EMP" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TB_ESTADO_HAB">
+    <Key>
+      <PropertyRef Name="COD_EST_HAB" />
+    </Key>
+    <Property Name="COD_EST_HAB" Type="Int32" Nullable="false" />
+    <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4" FromRole="TB_ESTADO_HAB" ToRole="TB_HABITACION" />
+  </EntityType>
+  <EntityType Name="TB_ESTADO_RES">
+    <Key>
+      <PropertyRef Name="COD_EST_RES" />
+    </Key>
+    <Property Name="COD_EST_RES" Type="Int32" Nullable="false" />
+    <Property Name="DESC_EST" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327" FromRole="TB_ESTADO_RES" ToRole="TB_RESERVA" />
+  </EntityType>
+  <EntityType Name="TB_HABITACION">
+    <Key>
+      <PropertyRef Name="COD_HAB" />
+    </Key>
+    <Property Name="COD_HAB" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="NUM_HAB" Type="String" Nullable="false" MaxLength="3" FixedLength="true" Unicode="false" />
+    <Property Name="COSTO_HAB" Type="Decimal" Nullable="false" Precision="5" Scale="1" />
+    <Property Name="COD_TIPO_HAB" Type="Int32" Nullable="false" />
+    <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="COD_EST_HAB" Type="Int32" Nullable="false" />
+    <Property Name="DESC_HAB" Type="String" Nullable="false" MaxLength="310" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_ESTADO_HAB" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_E__300424B4" FromRole="TB_HABITACION" ToRole="TB_ESTADO_HAB" />
+    <NavigationProperty Name="TB_SEDE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B" FromRole="TB_HABITACION" ToRole="TB_SEDE" />
+    <NavigationProperty Name="TB_TIPO_HAB" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42" FromRole="TB_HABITACION" ToRole="TB_TIPO_HAB" />
+    <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5" FromRole="TB_HABITACION" ToRole="TB_RESERVA" />
+  </EntityType>
+  <EntityType Name="TB_PENALIDAD">
+    <Key>
+      <PropertyRef Name="DIAS_PENAL" />
+    </Key>
+    <Property Name="DIAS_PENAL" Type="Int32" Nullable="false" />
+    <Property Name="PROPORCION" Type="Decimal" Nullable="false" Precision="2" Scale="2" />
+    <NavigationProperty Name="TB_RESERVA" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE" FromRole="TB_PENALIDAD" ToRole="TB_RESERVA" />
+  </EntityType>
+  <EntityType Name="TB_RESERVA">
+    <Key>
+      <PropertyRef Name="COD_RES" />
+    </Key>
+    <Property Name="COD_RES" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COD_CLI" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="FEC_CREACION" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FEC_RESERVA" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="FEC_CANCEL" Type="DateTime" Precision="0" />
+    <Property Name="DIAS_RESERVA" Type="Int32" Nullable="false" />
+    <Property Name="COD_HAB" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="DIAS_PENAL" Type="Int32" />
+    <Property Name="MONTO_COBRADO" Type="Decimal" Precision="5" Scale="1" />
+    <Property Name="FEC_INI" Type="DateTime" Precision="0" />
+    <Property Name="FEC_FIN" Type="DateTime" Precision="0" />
+    <Property Name="COD_EST_RES" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_C__37A5467C" FromRole="TB_RESERVA" ToRole="TB_CLIENTE" />
+    <NavigationProperty Name="TB_ESTADO_RES" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_E__3A81B327" FromRole="TB_RESERVA" ToRole="TB_ESTADO_RES" />
+    <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__COD_H__38996AB5" FromRole="TB_RESERVA" ToRole="TB_HABITACION" />
+    <NavigationProperty Name="TB_PENALIDAD" Relationship="HOTEL_CALIFORNIAModel.FK__TB_RESERV__DIAS___398D8EEE" FromRole="TB_RESERVA" ToRole="TB_PENALIDAD" />
+  </EntityType>
+  <EntityType Name="TB_SEDE">
+    <Key>
+      <PropertyRef Name="COD_SEDE" />
+    </Key>
+    <Property Name="COD_SEDE" Type="Int32" Nullable="false" />
+    <Property Name="DESC_SEDE" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_S__1A14E395" FromRole="TB_SEDE" ToRole="TB_EMPLEADO" />
+    <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_S__2F10007B" FromRole="TB_SEDE" ToRole="TB_HABITACION" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_DOC">
+    <Key>
+      <PropertyRef Name="COD_TIPO_DOC" />
+    </Key>
+    <Property Name="COD_TIPO_DOC" Type="Int32" Nullable="false" />
+    <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__20C1E124" FromRole="TB_TIPO_DOC" ToRole="TB_CLIENTE" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__182C9B23" FromRole="TB_TIPO_DOC" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_EMP">
+    <Key>
+      <PropertyRef Name="COD_TIPO_EMP" />
+    </Key>
+    <Property Name="COD_TIPO_EMP" Type="Int32" Nullable="false" />
+    <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_EMPLEA__COD_T__1920BF5C" FromRole="TB_TIPO_EMP" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_HAB">
+    <Key>
+      <PropertyRef Name="COD_TIPO_HAB" />
+    </Key>
+    <Property Name="COD_TIPO_HAB" Type="Int32" Nullable="false" />
+    <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_HABITACION" Relationship="HOTEL_CALIFORNIAModel.FK__TB_HABITA__COD_T__2E1BDC42" FromRole="TB_TIPO_HAB" ToRole="TB_HABITACION" />
+  </EntityType>
+  <EntityType Name="TB_TIPO_TARJ">
+    <Key>
+      <PropertyRef Name="COD_TIPO_TARJ" />
+    </Key>
+    <Property Name="COD_TIPO_TARJ" Type="Int32" Nullable="false" />
+    <Property Name="DESC_TIPO" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_CLIENT__COD_T__21B6055D" FromRole="TB_TIPO_TARJ" ToRole="TB_CLIENTE" />
+  </EntityType>
+  <EntityType Name="TB_USUARIO">
+    <Key>
+      <PropertyRef Name="COD_USU" />
+    </Key>
+    <Property Name="COD_USU" Type="String" Nullable="false" MaxLength="7" FixedLength="false" Unicode="false" />
+    <Property Name="NOM_USU" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="CLAVE" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="COD_CLI" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="COD_EMP" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="TB_CLIENTE" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_C__25869641" FromRole="TB_USUARIO" ToRole="TB_CLIENTE" />
+    <NavigationProperty Name="TB_EMPLEADO" Relationship="HOTEL_CALIFORNIAModel.FK__TB_USUARI__COD_E__267ABA7A" FromRole="TB_USUARIO" ToRole="TB_EMPLEADO" />
+  </EntityType>
+  <Association Name="FK__TB_CLIENT__COD_T__20C1E124">
+    <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" Role="TB_TIPO_DOC" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_DOC">
+        <PropertyRef Name="COD_TIPO_DOC" />
+      </Principal>
+      <Dependent Role="TB_CLIENTE">
+        <PropertyRef Name="COD_TIPO_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_CLIENT__COD_T__21B6055D">
+    <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_TARJ" Role="TB_TIPO_TARJ" Multiplicity="0..1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_TARJ">
+        <PropertyRef Name="COD_TIPO_TARJ" />
+      </Principal>
+      <Dependent Role="TB_CLIENTE">
+        <PropertyRef Name="COD_TIPO_TARJ" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_RESERV__COD_C__37A5467C">
+    <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CLIENTE">
+        <PropertyRef Name="COD_CLI" />
+      </Principal>
+      <Dependent Role="TB_RESERVA">
+        <PropertyRef Name="COD_CLI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_USUARI__COD_C__25869641">
+    <End Type="HOTEL_CALIFORNIAModel.TB_CLIENTE" Role="TB_CLIENTE" Multiplicity="0..1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_USUARIO" Role="TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_CLIENTE">
+        <PropertyRef Name="COD_CLI" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="COD_CLI" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_EMPLEA__COD_E__1B0907CE">
+    <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_EMP" Role="TB_ESTADO_EMP" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESTADO_EMP">
+        <PropertyRef Name="COD_EST_EMP" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="COD_EST_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_EMPLEA__COD_S__1A14E395">
+    <End Type="HOTEL_CALIFORNIAModel.TB_SEDE" Role="TB_SEDE" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SEDE">
+        <PropertyRef Name="COD_SEDE" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="COD_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_EMPLEA__COD_T__182C9B23">
+    <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_DOC" Role="TB_TIPO_DOC" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_DOC">
+        <PropertyRef Name="COD_TIPO_DOC" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="COD_TIPO_DOC" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_EMPLEA__COD_T__1920BF5C">
+    <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_EMP" Role="TB_TIPO_EMP" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_EMP">
+        <PropertyRef Name="COD_TIPO_EMP" />
+      </Principal>
+      <Dependent Role="TB_EMPLEADO">
+        <PropertyRef Name="COD_TIPO_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_USUARI__COD_E__267ABA7A">
+    <End Type="HOTEL_CALIFORNIAModel.TB_EMPLEADO" Role="TB_EMPLEADO" Multiplicity="0..1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_USUARIO" Role="TB_USUARIO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_EMPLEADO">
+        <PropertyRef Name="COD_EMP" />
+      </Principal>
+      <Dependent Role="TB_USUARIO">
+        <PropertyRef Name="COD_EMP" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_HABITA__COD_E__300424B4">
+    <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_HAB" Role="TB_ESTADO_HAB" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESTADO_HAB">
+        <PropertyRef Name="COD_EST_HAB" />
+      </Principal>
+      <Dependent Role="TB_HABITACION">
+        <PropertyRef Name="COD_EST_HAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_RESERV__COD_E__3A81B327">
+    <End Type="HOTEL_CALIFORNIAModel.TB_ESTADO_RES" Role="TB_ESTADO_RES" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_ESTADO_RES">
+        <PropertyRef Name="COD_EST_RES" />
+      </Principal>
+      <Dependent Role="TB_RESERVA">
+        <PropertyRef Name="COD_EST_RES" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_HABITA__COD_S__2F10007B">
+    <End Type="HOTEL_CALIFORNIAModel.TB_SEDE" Role="TB_SEDE" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_SEDE">
+        <PropertyRef Name="COD_SEDE" />
+      </Principal>
+      <Dependent Role="TB_HABITACION">
+        <PropertyRef Name="COD_SEDE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_HABITA__COD_T__2E1BDC42">
+    <End Type="HOTEL_CALIFORNIAModel.TB_TIPO_HAB" Role="TB_TIPO_HAB" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_TIPO_HAB">
+        <PropertyRef Name="COD_TIPO_HAB" />
+      </Principal>
+      <Dependent Role="TB_HABITACION">
+        <PropertyRef Name="COD_TIPO_HAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_RESERV__COD_H__38996AB5">
+    <End Type="HOTEL_CALIFORNIAModel.TB_HABITACION" Role="TB_HABITACION" Multiplicity="1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_HABITACION">
+        <PropertyRef Name="COD_HAB" />
+      </Principal>
+      <Dependent Role="TB_RESERVA">
+        <PropertyRef Name="COD_HAB" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__TB_RESERV__DIAS___398D8EEE">
+    <End Type="HOTEL_CALIFORNIAModel.TB_PENALIDAD" Role="TB_PENALIDAD" Multiplicity="0..1" />
+    <End Type="HOTEL_CALIFORNIAModel.TB_RESERVA" Role="TB_RESERVA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TB_PENALIDAD">
+        <PropertyRef Name="DIAS_PENAL" />
+      </Principal>
+      <Dependent Role="TB_RESERVA">
+        <PropertyRef Name="DIAS_PENAL" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

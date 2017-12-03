@@ -1,0 +1,106 @@
+﻿@model IEnumerable<Habitacion>
+
+@{
+    ViewBag.Title = "ListarHabitaciones";
+}
+
+<h2>Listado de Habitaciones</h2>
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <table cellpadding="10">
+        <tr>
+            <td><label class="control-label">Seleccione la Sede</label></td>
+            <td>@Html.DropDownList("sede", (SelectList)ViewBag.sedes, htmlAttributes: new { @class = "form-control" })</td>
+            <td style="padding-left:30px"><input type="submit" value="LISTAR" onclick="return validarDatosListaHab()" class="btn btn-primary" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Fecha a reservar</label></td>
+            <td><input type="datetime" class = "form-control" id="idFecha" name="fecha" readonly="readonly" style="background-color:white" value="@ViewBag.fecha" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Cantidad de días</label></td>
+            <td><input type="number" class = "form-control" id="idDias" name="dias" value="@ViewBag.dias" required="required" min="1" max="30"/></td>
+        </tr>
+
+        <tr class="blank_row"><td colspan="3"></td></tr>
+        <tr class="blank_row"><td colspan="3"></td></tr>
+    </table>
+}
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoHab)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numHab)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.costoHab)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.tipoHab)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numHab)
+            </td>
+            <td>
+                S/. @Html.DisplayFor(modelItem => item.costoHab)
+            </td>
+            <td>
+                @Html.ActionLink("Ver detalles", "DetallesHabitacion", new { id = item.codHab, sed = ViewBag.sede, dia = ViewBag.dias, fec = DateTime.Parse(ViewBag.fecha) })
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+@section Scripts {
+
+<script type="text/javascript">
+
+    if ('@ViewBag.mensaje' != ""){
+        alert('@ViewBag.mensaje');
+    }
+
+    $(document).ready(function () {
+         $('input[type=datetime]').datepicker({
+             dateFormat: "dd/mm/yy",
+             minDate: 0,
+             changeMonth: true,
+             changeYear: true,
+             yearRange: "-0:+10"
+         });
+    });
+
+    function setMessage(tag, tipo) {
+
+        var tagval = tag.value;
+
+        switch (tipo) {
+            default:
+                try { tag.setCustomValidity('') }
+                catch (e) { }
+                break;
+
+            case "espacios":
+                if (tagval.includes(" "))
+                    tag.setCustomValidity('No usar espacios');
+                break;
+        }
+    }
+
+</script>
+
+}

@@ -1,0 +1,155 @@
+﻿@model CreaUsuario
+
+@{
+    ViewBag.Title = "CrearUsuario";
+}
+
+<h2>Nuevo Usuario</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomCliente, new { htmlAttributes = new { @class = "form-control", @id = "idNombre", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.nomCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.apeCliente, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.apeCliente, new { htmlAttributes = new { @class = "form-control", @id = "idApellido", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.apeCliente, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codTipoDoc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("codTipoDoc", (SelectList)ViewBag.TiposDoc, htmlAttributes: new { @class = "form-control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numDoc, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numDoc, new { htmlAttributes = new { @class = "form-control", @id = "idNumDoc", @required = "required",
+                    @maxlength = "30", @minlength = "6", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.numDoc, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control", @id = "idTelefono", @required = "required",
+                    @maxlength = "30", @minlength = "6", @pattern = "[0-9]+", @oninvalid = "setMessage(this,'numeros')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.direccion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.direccion, new { htmlAttributes = new { @class = "form-control", @id = "idDireccion", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control", @id = "idEmail", @required = "required",
+                    @maxlength = "50", @type = "email", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.nomUsuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.nomUsuario, new { htmlAttributes = new { @class = "form-control", @id = "idNomUsu", @required = "required",
+                    @maxlength = "20", @minlength = "4", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.nomUsuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.clave, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.clave, new { htmlAttributes = new { @class = "form-control", @id = "idClave1", @type = "password", @required = "required",
+                    @maxlength = "20", @minlength = "8", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.clave, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class = "control-label col-md-2">Repetir Contraseña</label>
+            <div class="col-md-10">
+                <input type="password" class="form-control" id="idClave2" required="required" maxlength="20" minlength="8"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" />
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar Usuario" onclick="return validarDatosClaves()" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<br/>
+<div>
+    @Html.ActionLink("Salir", "PaginaPrincipal")
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+
+    if ('@ViewBag.mensaje' != ""){
+        alert('@ViewBag.mensaje');
+
+        document.getElementById("idClave1").value = "";
+    }
+
+
+    function setMessage(tag, tipo) {
+
+        var tagval = tag.value;
+
+        switch (tipo) {
+            default:
+                try { tag.setCustomValidity('') }
+                catch (e) { }
+                break;
+
+            case "minimo":
+                if (tagval.trim().length == 0)
+                    tag.setCustomValidity('Ingresar por lo menos un caracter');
+                break;
+
+            case "espacios":
+                if (tagval.includes(" "))
+                    tag.setCustomValidity('No usar espacios');
+                break;
+
+            case "numeros":
+                if (isNaN(tagval) || tagval.includes(" "))
+                    tag.setCustomValidity('Usar solo caracteres numéricos sin espacios');
+                break;
+        }
+    }
+
+</script>
+}

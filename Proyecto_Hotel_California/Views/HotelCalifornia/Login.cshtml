@@ -1,0 +1,78 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+
+@*<h2 class="col-md-offset-5">Iniciar Sesión</h2>*@
+<div class="row ">
+    <div class="col-md-8">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "HotelCalifornia", new { ReturnUrl = Session["ReturnUrl"].ToString() }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group ">
+                    @*@Html.LabelFor(m => m.nomUsuario, new { @class = "col-md-2 control-label glyphicon glyphicon-user" })*@
+                    <div class="col-md-offset-6 col-md-10">
+                        <label style="font-size:40px;padding-top:0px;" class="col-md-2 control-label glyphicon glyphicon-user "></label>
+                        @Html.TextBoxFor(m => m.nomUsuario, new { @class = "form-control input-lg", @required = "required",
+                            @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" })
+                        @Html.ValidationMessageFor(m => m.nomUsuario, "", new { @class = "col-md-offset-2 text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.clave, new { @class = "col-md-2 control-label" })*@
+                    <div class="col-md-offset-6 col-md-10">
+                         <label style="font-size:40px;padding-top:0px;" class="col-md-2 control-label glyphicon glyphicon-lock"></label>
+                        @Html.PasswordFor(m => m.clave, new { @class = "form-control input-lg", @required = "required",
+                            @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" })
+                        @Html.ValidationMessageFor(m => m.clave, "", new { @class = "col-md-offset-2 text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-offset-8 col-md-10">
+                        <input type="submit" value="Iniciar Sesión" class="btn-lg btn-primary" />
+                      
+                    </div>
+                </div>
+                <br />
+                <br />
+                <p class="col-md-offset-7 col-md-10">
+                    @Html.ActionLink("Registrar como nuevo usuario", "CrearUsuario")
+                </p>
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+
+    <script type="text/javascript">
+
+        if ('@ViewBag.mensaje' != ""){
+            alert('@ViewBag.mensaje');
+        }
+
+
+        function setMessage(tag, tipo) {
+
+            var tagval = tag.value;
+
+            switch (tipo) {
+                default:
+                    try { tag.setCustomValidity('') }
+                    catch (e) { }
+                    break;
+
+                case "espacios":
+                    if (tagval.includes(" "))
+                        tag.setCustomValidity('No usar espacios');
+                    break;
+            }
+        }
+
+    </script>
+
+}

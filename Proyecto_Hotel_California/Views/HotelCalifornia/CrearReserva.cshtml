@@ -1,0 +1,150 @@
+﻿@{ UsuarioLog logueado = (UsuarioLog)Session["logueado"]; }
+@model CreaReserva
+
+@{
+    ViewBag.Title = "CrearReserva";
+}
+
+<h2>Crear Reserva</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <label class="control-label col-md-2">Cliente</label>
+@if (@logueado != null && !@logueado.tipoUsuario.Equals("Cliente"))
+{
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="idNomCli" readonly="readonly" style="background-color:white" onclick="buscarCliente()" required="required" />
+                <input type="hidden" name="codCliente" id="idCodCli" />
+            </div>
+}
+else
+{
+            <div class="col-md-10">
+                <input type="text" class="form-control" value="@logueado.nombre @logueado.apellido" readonly="readonly" />
+                <input type="hidden" name="codCliente" value="@logueado.codigo"  id="idCodCli" required="required" />
+            </div>
+}
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecReserva, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecReserva, new { htmlAttributes = new { @class = "form-control", @readonly= "readonly", @style = "background-color:white" } })
+                @Html.ValidationMessageFor(model => model.fecReserva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.diasReserva, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.diasReserva, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @type = "text", @style = "background-color:white" } })
+                @Html.ValidationMessageFor(model => model.diasReserva, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numHabitacion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numHabitacion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style = "background-color:white" } })
+                @Html.ValidationMessageFor(model => model.numHabitacion, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.codHabitacion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @type = "hidden" } })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @*@Html.LabelFor(model => model.total, htmlAttributes: new { @class = "control-label col-md-2" })*@
+            <label class="control-label col-md-2">Costo Total (S/.)</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style = "background-color:white" } })
+                @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
+            </div>
+
+        </div>
+        <hr />
+        <br />
+        <h4>Datos de Tarjeta de Crédito</h4>
+        <br/>
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de Tarjeta</label>
+            <div class="col-md-10">
+                @Html.DropDownList("tipoTarjeta", (SelectList)ViewBag.tipos, htmlAttributes: new { @class = "form-control", @id = "idTipoTarj"})
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.numTarjeta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.numTarjeta, new { htmlAttributes = new { @class = "form-control", @id = "idNumTarj", @required = "required",
+                    @maxlength = "16", @minlength = "15", @pattern = "[0-9]+", @oninvalid = "setMessage(this,'numeros')", @onchange = "setMessage(this,'reset')" } })    
+                @Html.ValidationMessageFor(model => model.numTarjeta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.fecVencimiento, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.fecVencimiento, new { htmlAttributes = new { @class = "form-control", @id = "idFecVenc", @required = "required",
+                    @maxlength = "4", @minlength = "4", @pattern = "[0-9]+", @oninvalid = "setMessage(this,'numeros')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.fecVencimiento, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.codSeguridad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.codSeguridad, new { htmlAttributes = new { @class = "form-control", @id = "idCodSeg", @required = "required",
+                    @maxlength = "4", @minlength = "3", @pattern = "[0-9]+", @oninvalid = "setMessage(this,'numeros')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.codSeguridad, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br/>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Generar Reserva" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+    <br/>
+}
+
+<div>
+    @Html.ActionLink("Volver a buscar", "ListarHabitaciones")
+</div>
+
+@section Scripts {
+
+<script type="text/javascript">
+
+    function buscarCliente() {
+        window.open("@Url.Action("ListarClientes", "HotelCalifornia")?mensaje=buscar", "null", "height=900, width=1000, status=yes, toolbar=no, menubar=no, top=200, left=800");
+    }
+
+
+    function setMessage(tag, tipo) {
+
+        var tagval = tag.value;
+
+        switch (tipo) {
+            default:
+                try { tag.setCustomValidity('') }
+                catch (e) { }
+                break;
+
+            case "numeros":
+                if (isNaN(tagval) || tagval.includes(" "))
+                    tag.setCustomValidity('Usar solo caracteres numéricos sin espacios');
+                break;
+        }
+    }
+
+</script>
+
+}

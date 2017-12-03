@@ -1,0 +1,100 @@
+﻿@model Proyecto_Hotel_California.Models.TB_EMPLEADO
+
+@{
+    ViewBag.Title = "EditarEmpleado";
+}
+
+<h2>EditarEmpleado</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>TB_EMPLEADO</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nombre</label>
+            <input id="id" type="hidden" value="@Model.COD_EMP" />
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="nombre" value="@Model.NOM_EMP" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Apellido</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="apellido" value="@Model.APE_EMP" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Fecha de Nacimiento</label>
+            <div class="col-md-10">
+                <input type="datetime" class="form-control" id="idFecNac" name="FEC_NAC" readonly="readonly" style="background-color:white" />
+                @Html.ValidationMessageFor(model => model.FEC_NAC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Telefono</label>
+            <div class="col-md-10">
+                <input type="text" class="form-control" id="telefono" value="@Model.TELEFONO" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Direccion</label>
+            <div class="col-md-10">                
+                <input type="text" class="form-control" id="direccion"  value="@Model.DIRECCION" />
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default" onclick="Guardar()" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+    <script type="text/javascript">
+
+
+        function Guardar() {
+
+            var fecha = document.getElementById("idFecNac").value;
+            var nombre = document.getElementById("nombre").value;
+            var apellido = document.getElementById("apellido").value;
+            var telefono = document.getElementById("telefono").value;
+            var direccion = document.getElementById("direccion").value;
+            var id = document.getElementById("id").value;
+
+
+            window.location.href = '@Url.Action("GuardarEditarEmpleado", "HotelCalifornia")?fecha=' + fecha + '&nombre=' + nombre + '&direccion=' + direccion + '&apellido=' + apellido + '&telefono=' + telefono + '&id=' + id;
+        }
+
+        $(document).ready(function () {
+            $('input[type=datetime]').datepicker({
+                dateFormat: "dd/mm/yy",
+                maxDate: "+1m",
+                changeMonth: true,
+                changeYear: true
+            });
+        });
+
+    </script>
+}

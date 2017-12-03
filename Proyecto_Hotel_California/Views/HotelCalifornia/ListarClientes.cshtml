@@ -1,0 +1,145 @@
+﻿@{ UsuarioLog logueado = (UsuarioLog)Session["logueado"]; }
+@model IEnumerable<Cliente>
+
+@{
+    ViewBag.Title = "ListarClientes";
+}
+
+@if (!string.IsNullOrEmpty(ViewBag.mensaje) && ViewBag.mensaje.Contains("buscar"))
+{
+<h2>Listado de Clientes</h2>
+}
+else
+{
+<h2>Mantenimiento de Clientes</h2>
+}
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <table cellpadding="10">
+        <tr>
+            <td><label class="control-label">Código de Cliente</label></td>
+            <td><input type="text" class = "form-control" id="idCod" name="cod" value="@ViewBag.cod" maxlength = "7" minlength = "7"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+            <td style="padding-left:30px"><input type="submit" value="LISTAR" onclick="return validarDatosListaCli()" class="btn btn-primary" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Apellido de Cliente</label></td>
+            <td><input type="text" class = "form-control" id="idApe" name="ape" value="@ViewBag.ape" maxlength = "50"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Número de Documento</label></td>
+            <td><input type="text" class = "form-control" id="idDoc" name="doc" value="@ViewBag.doc" maxlength = "30" minlength = "6"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+        </tr>
+
+        <tr>
+            <td><input type="hidden" value="@ViewBag.mensaje" id="idMsg" /></td>
+        </tr>
+
+        <tr class="blank_row"><td colspan="3"></td></tr>
+        <tr class="blank_row"><td colspan="3"></td></tr>
+
+    </table>
+}
+<br />
+
+<table class="table table-hover table-bordered">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.codCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nomCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.apeCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tipoDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.direccion)
+        </th>
+@if (string.IsNullOrEmpty(ViewBag.mensaje) || !ViewBag.mensaje.Contains("buscar"))
+{
+        <th></th>
+}
+    </tr>
+    
+
+@foreach (var item in Model) {
+    <tr onclick = "returnValuesCliente('@item.codCliente','@item.nomCliente','@item.apeCliente','@item.tipoTC','@item.numTC','@item.venc','@item.codSeg')" >
+
+        <td>
+            @Html.DisplayFor(modelItem => item.codCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nomCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.apeCliente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tipoDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.direccion)
+        </td>
+@if (string.IsNullOrEmpty(ViewBag.mensaje) || !ViewBag.mensaje.Contains("buscar"))
+{
+        <td>
+            @Html.ActionLink("Editar", "EditarCliente", new { id = item.codCliente })
+        </td>
+}
+    </tr>
+}
+</table>
+<br />
+
+@section Scripts {
+
+<script type="text/javascript">
+
+    if ('@ViewBag.mensaje' != "" && !'@ViewBag.mensaje'.includes("buscar") {
+        alert('@ViewBag.mensaje');
+    }
+
+    function setMessage(tag, tipo) {
+
+        var tagval = tag.value;
+
+        switch (tipo) {
+            default:
+                try { tag.setCustomValidity('') }
+                catch (e) { }
+                break;
+
+            case "espacios":
+                if (tagval.includes(" "))
+                    tag.setCustomValidity('No usar espacios');
+                break;
+        }
+    }
+
+</script>
+
+}

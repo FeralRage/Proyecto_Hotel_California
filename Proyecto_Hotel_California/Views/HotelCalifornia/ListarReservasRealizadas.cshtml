@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Reserva>
+
+@{
+    ViewBag.Title = "ListarReservasRealizadas";
+}
+
+<h2> Mis Reservas</h2>
+<br />
+<br />
+<p>
+    <span class="glyphicon glyphicon-plus"></span>
+    @Html.ActionLink("Nueva Reserva", "ListarHabitaciones")
+</p>
+<br />
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diasReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numHabitacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codReserva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecReserva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.diasReserva)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.numHabitacion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Ver Detalles", "DetallesReserva", new { id = item.codReserva })
+        </td>
+    </tr>
+}
+</table>
+<br />

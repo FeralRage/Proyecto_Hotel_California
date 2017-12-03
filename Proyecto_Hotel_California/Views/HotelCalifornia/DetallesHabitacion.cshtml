@@ -1,0 +1,83 @@
+﻿@model Habitacion
+
+@{
+    ViewBag.Title = "DetallesHabitacion";
+}
+
+<h2>Detalles de la Habitación</h2>
+
+<div>
+    <hr />
+    <br />
+    <dl class="dl-horizontal">
+        <dt >
+            @Html.DisplayNameFor(model => model.tipoHab)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoHab)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numHab)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numHab)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.sedeHab)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.sedeHab)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.costoHab)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            S/. @Html.DisplayFor(model => model.costoHab) (inc. IGV)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.descHab)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.descHab)
+        </dd>
+
+        <dt></dt>
+        
+        <dd>
+            <br />
+            <br />
+            <button onclick="location.href='@Url.Action("CrearReserva", "HotelCalifornia", new { id = Model.codHab, dias = ViewBag.dias, costo = Model.costoHab, numHab = Model.numHab, fecha = ViewBag.fecha })'" class="btn btn-primary">RESERVAR</button>
+        </dd>
+    </dl>
+</div>
+<br />
+<p>
+    @Html.ActionLink("Volver al listado", "ListarHabitaciones", new { sede = ViewBag.sede, fecha = DateTime.Parse(ViewBag.fecha), dias = ViewBag.dias })
+</p>

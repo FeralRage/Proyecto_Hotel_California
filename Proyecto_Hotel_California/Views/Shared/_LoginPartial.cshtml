@@ -1,0 +1,54 @@
+﻿@{ UsuarioLog logueado = (UsuarioLog)Session["logueado"]; }
+
+@if (@logueado != null)
+{
+    using (Html.BeginForm("Logout", "HotelCalifornia", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    @*<ul class="nav navbar-nav navbar-right">
+        <li class="">
+            @Html.ActionLink("Hola " + @logueado.nombre + "!", "PaginaPrincipal", "HotelCalifornia")
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a></li>
+    </ul>*@
+
+    <ul class="nav navbar-nav">
+        <li class="dropdown active">
+            <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/HotelCalifornia/PaginaPrincipal.cshtml">
+                <span class="glyphicon glyphicon-user"></span>
+                @logueado.nombre
+                <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+@if (@logueado.tipoUsuario.Equals("Cliente"))
+{
+                <li>
+                    @Html.ActionLink("Editar Datos ", "EditarDatos", "HotelCalifornia")
+                </li>
+                <li>
+                    @Html.ActionLink("Mis Reservas", "ListarReservasRealizadas", "HotelCalifornia")
+                </li>
+}
+else
+{
+                <li>
+                    @Html.ActionLink("Cambiar Contraseña", "EditarClave", "HotelCalifornia")
+                </li>
+}
+            </ul>
+        </li>
+        <li>
+            <a href="javascript:document.getElementById('logoutForm').submit()"><span class="glyphicon glyphicon-log-out"></span> Cerrar sesión</a>
+        </li>
+    </ul>
+
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Registrarse", "CrearUsuario", "HotelCalifornia")</li>
+        <li>@Html.ActionLink("Iniciar sesión", "Login", "HotelCalifornia")</li>
+    </ul>
+}

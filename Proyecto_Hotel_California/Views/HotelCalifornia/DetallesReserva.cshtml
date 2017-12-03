@@ -1,0 +1,246 @@
+﻿@model Reserva
+
+@{
+    ViewBag.Title = "DetallesReserva";
+}
+
+<h2>Detalles de la Reserva</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">        
+
+        <dt>
+            @Html.DisplayNameFor(model => model.codReserva)            
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.codReserva)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecCreacion)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecCreacion)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecReserva)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecReserva)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.diasReserva)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diasReserva)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.numHabitacion)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.numHabitacion)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tipoHabitacion)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tipoHabitacion)
+            <br />
+            <br />
+        </dd>
+
+@if (ViewBag.NullDate.Equals(Model.fecFin))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.montoTotal)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            S/. @Html.DisplayFor(model => model.montoTotal)
+            <br />
+            <br />
+        </dd>
+}
+
+        @if (!ViewBag.NullDate.Equals(Model.fecFin))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.fecFin)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecFin)
+            <br />
+            <br />
+        </dd>
+}
+
+@if (!ViewBag.NullDate.Equals(Model.fecCancelacion))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.fecCancelacion)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecCancelacion)
+            <br />
+            <br />
+        </dd>
+}
+
+@if (Model.diasFaltantes >= 0 && Model.estado.Equals("Activa"))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.diasFaltantes)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.diasFaltantes)
+            <br />
+            <br />
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.montoCancelacion)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            S/. @Html.DisplayFor(model => model.montoCancelacion) (Si lo hiciera hoy)
+            <br />
+            <br />
+        </dd>
+}
+
+@if (Model.estado.Equals("Cancelada") || Model.estado.Equals("Finalizada"))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.montoCobrado)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            S/. @Html.DisplayFor(model => model.montoCobrado)
+            <br />
+            <br />
+        </dd>
+}
+
+@if (!ViewBag.NullDate.Equals(Model.fecInicio))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.fecInicio)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecInicio)
+            <br />
+            <br />
+        </dd>
+}
+
+@if (!ViewBag.NullDate.Equals(Model.fecFin))
+{
+        <dt>
+            @Html.DisplayNameFor(model => model.fecFin)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecFin)
+            <br />
+            <br />
+        </dd>
+}
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado)
+            <br />
+            <br />
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado)
+            <br />
+            <br />
+        </dd>        
+        <dd>
+            <br />
+            <br />
+@if (ViewBag.Tipo.Equals("checkin") && Model.estado.Equals("Activa"))
+{
+            <button onclick="location.href='@Url.Action("ProcesarReserva", "HotelCalifornia", new { id = Model.codReserva, tipo = "checkin" })'" class="btn btn-primary">CHECK-IN</button>
+}
+@if (ViewBag.Tipo.Equals("checkout") && Model.estado.Equals("En curso"))
+{
+            <button onclick="location.href='@Url.Action("ProcesarReserva", "HotelCalifornia", new { id = Model.codReserva, tipo = "checkout" })'" class="btn btn-primary">CHECK-OUT</button>
+}
+@if (ViewBag.Tipo.Equals("cancel") && Model.estado.Equals("Activa"))
+{
+            <button onclick="location.href='@Url.Action("ProcesarReserva", "HotelCalifornia", new { id = Model.codReserva, tipo = "cancel" })'" class="btn btn-primary">CANCELAR RESERVA</button>
+}
+        </dd>        
+        <dd>
+            @Html.ActionLink("Editar Reserva", "EditarReserva", new { id = Model.codReserva })
+
+        </dd>
+
+    </dl>
+</div>
+
+<p>
+@if (ViewBag.Tipo.Equals("cliente"))
+{
+    @Html.ActionLink("Volver a la lista", "ListarReservasRealizadas")
+}
+else
+{
+    @Html.ActionLink("Volver a listar", "ListarReservasxFiltro", new { id = Model.codReserva, tipo = ViewBag.Tipo })
+}
+</p>

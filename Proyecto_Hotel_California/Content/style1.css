@@ -1,0 +1,25 @@
+.blank_row
+{
+    height: 10px !important; /* overwrites any other rules */
+    background-color: #FFFFFF;
+}
+
+table
+{
+    empty-cells: show;
+}
+
+/*td
+{
+    display: inline-block;
+}*/    
+
+td.spaced
+{
+    margin-left: 20px;
+}
+
+.div_center
+{
+    text-align:center;
+}

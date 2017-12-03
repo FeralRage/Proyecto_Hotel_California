@@ -1,0 +1,110 @@
+﻿@model TB_CLIENTE
+
+@{
+    ViewBag.Title = "EditarCliente";
+}
+
+<h2>Editar Cliente</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        @Html.EditorFor(model => model.COD_CLI, new { htmlAttributes = new { @class = "form-control", @type = "hidden" } })
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Nombre</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NOM_CLI, new { htmlAttributes = new { @class = "form-control", @id = "idNombre", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.NOM_CLI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Apellido</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.APE_CLI, new { htmlAttributes = new { @class = "form-control", @id = "idApellido", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.APE_CLI, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Tipo de Documento</label>
+            <div class="col-md-10">
+                @Html.DropDownList("COD_TIPO_DOC", (SelectList)ViewBag.TiposDoc, htmlAttributes: new { @class = "form -control" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Número de Documento</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NUM_DOC, new { htmlAttributes = new { @class = "form-control", @id = "idNumDoc", @required = "required",
+                    @maxlength = "30", @minlength = "6", @pattern = @"[^\s]+", @oninvalid = "setMessage(this,'espacios')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.NUM_DOC, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Teléfono</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TELEFONO, new { htmlAttributes = new { @class = "form-control", @id = "idTelefono", @required = "required",
+                    @maxlength = "30", @minlength = "6", @pattern = "[0-9]+", @oninvalid = "setMessage(this,'numeros')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.TELEFONO, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label col-md-2">Dirección</label>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DIRECCION, new { htmlAttributes = new { @class = "form-control", @id = "idDireccion", @required = "required",
+                    @maxlength = "50", @pattern = ".*[^ ].*", @oninvalid = "setMessage(this,'minimo')", @onchange = "setMessage(this,'reset')" } })
+                @Html.ValidationMessageFor(model => model.DIRECCION, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Registrar Cambios" class="btn btn-primary" />
+            </div>
+        </div>
+    </div>
+}
+<br />
+<div>
+    @Html.ActionLink("Volver a la lista", "ListarClientes")
+</div>
+
+@section Scripts {
+    
+<script type="text/javascript">
+
+    function setMessage(txt, tipo) {
+        switch (tipo) {
+            default:
+                try { txt.setCustomValidity('') }
+                catch(e) { }
+                break;
+
+            case "minimo":
+                txt.setCustomValidity('Ingresar por lo menos un caracter');
+                break;
+
+            case "espacios":
+                txt.setCustomValidity('No usar espacios');
+                break;
+
+            case "numeros":
+                txt.setCustomValidity('Usar solo caracteres numéricos');
+                break;
+        }
+    }
+
+</script>
+}

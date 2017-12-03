@@ -1,0 +1,166 @@
+﻿@model IEnumerable<Reserva>
+
+@{
+    ViewBag.Title = "ListarReservasxFiltro";
+}
+
+@if (string.IsNullOrEmpty(ViewBag.Tipo))
+{
+<h2>Listado de Reservas</h2>
+}
+@if (ViewBag.Tipo.Equals("checkin"))
+{
+<h2>Check-In</h2>
+}
+@if (ViewBag.Tipo.Equals("checkout"))
+{
+<h2>Check-Out</h2>
+}
+@if (ViewBag.Tipo.Equals("cancel"))
+{
+<h2>Cancelar Reserva</h2>
+}
+<br />
+<br />
+
+@using (Html.BeginForm())
+{
+    <table cellpadding="10">
+        <tr>
+            <td><label class="control-label">Código de Reserva</label></td>
+            <td><input type="text" class = "form-control" id="idCod" name="cod" value="@ViewBag.Cod" maxlength = "9" minlength = "9"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+            <td style="padding-left:30px"><input type="submit" value="LISTAR" onclick="return validarDatosListaRes()" class="btn btn-primary" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Apellido de Cliente</label></td>
+            <td><input type="text" class = "form-control" id="idApe" name="ape" value="@ViewBag.Ape" maxlength = "50"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+            <td><input type="hidden" name="tipo" value="@ViewBag.Tipo" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Número de Documento</label></td>
+            <td><input type="text" class = "form-control" id="idDoc" name="doc" value="@ViewBag.Doc" maxlength = "30" minlength = "6"
+                       pattern="[^\s]+" oninvalid="setMessage(this,'espacios')" onchange="setMessage(this,'reset')" /></td>
+        </tr>
+
+@if (ViewBag.Tipo.Equals("cancel"))
+{
+        <tr>
+            <td><label class="control-label">Fecha reservada</label></td>
+            <td><input type="datetime" class = "form-control" id="idFecha" name="fecha" value="@ViewBag.Fecha" readonly="readonly" style="background-color:white" /></td>
+            <td style="padding-left:0px" ><input type="button" value="X" onclick="resetFecha()" class="btn btn-default"></td>
+        </tr>
+}
+        <tr class="blank_row"><td colspan="3"></td></tr>
+        <tr class="blank_row"><td colspan="3"></td></tr>
+
+    </table>
+}
+<br />
+
+<table class="table table-bordered">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.codCliente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.diasReserva)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.numHabitacion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sede)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.codCliente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fecReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.diasReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.numHabitacion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.sede)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+@if (ViewBag.Tipo.Equals("checkin"))
+{
+                @Html.ActionLink("Check-In", "DetallesReserva", new { id = item.codReserva, tipo = "checkin" })
+}
+@if (ViewBag.Tipo.Equals("checkout"))
+{
+                @Html.ActionLink("Check-Out", "DetallesReserva", new { id = item.codReserva, tipo = "checkout" })
+}
+@if (ViewBag.Tipo.Equals("cancel"))
+{
+                @Html.ActionLink("Detalles", "DetallesReserva", new { id = item.codReserva, tipo = "cancel" })
+}
+            </td>
+        </tr>
+    }
+</table>
+<br />
+
+@section Scripts {
+
+<script type="text/javascript">
+
+     $(document).ready(function () {
+         $('input[type=datetime]').datepicker({
+             dateFormat: "dd/mm/yy",
+             minDate: 0,
+             changeMonth: true,
+             changeYear: true,
+             yearRange: "-0:+10"
+         });
+     });
+    
+     function setMessage(tag, tipo) {
+
+         var tagval = tag.value;
+
+         switch (tipo) {
+             default:
+                 try { tag.setCustomValidity('') }
+                 catch (e) { }
+                 break;
+
+             case "espacios":
+                 if (tagval.includes(" "))
+                     tag.setCustomValidity('No usar espacios');
+                 break;
+         }
+     }
+
+</script>
+
+}

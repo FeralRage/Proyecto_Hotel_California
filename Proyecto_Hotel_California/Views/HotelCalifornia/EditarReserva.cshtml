@@ -1,0 +1,79 @@
+﻿@model Proyecto_Hotel_California.Models.TB_RESERVA
+
+@{
+    ViewBag.Title = "EditarReserva";
+}
+
+<h2>EditarReserva</h2>
+
+@using (Html.BeginForm())
+{
+    <table cellpadding="10">
+
+        <tr>
+            <td>                
+                <input id="id" type="hidden" value="@Model.COD_RES" />
+            </td>
+        </tr>
+        <tr>
+            <td><label class="control-label">Fecha a reservar</label></td>
+            <td><input type="datetime" class="form-control" id="idFecha" name="fecha" readonly="readonly" style="background-color:white" value="@ViewBag.fecha" /></td>
+        </tr>
+
+        <tr>
+            <td><label class="control-label">Cantidad de días</label></td>
+            <td><input type="number" class="form-control" id="idDias" name="dias" value="@ViewBag.dias" required="required" min="1" max="30" /></td>
+        </tr>
+        <tr>
+
+            <td>
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="button" value="GUARDAR" onclick="Guardar()" />
+                </div>
+
+            </td>
+
+        </tr>
+
+        <tr class="blank_row"><td colspan="3"></td></tr>
+        <tr class="blank_row"><td colspan="3"></td></tr>
+    </table>
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+
+@section Scripts {
+@Scripts.Render("~/bundles/jqueryval")
+    <script type="text/javascript">
+
+        function Guardar() {
+
+            var fecha = document.getElementById("idFecha").value;
+            var dias = document.getElementById("idDias").value;
+            var id = document.getElementById("id").value;
+
+
+            window.location.href = '@Url.Action("GuardarEditarReserva", "HotelCalifornia")?fecha=' + fecha + '&dias=' + dias + '&id=' + id;                 
+        }
+
+
+
+    if ('@ViewBag.mensaje' != ""){
+        alert('@ViewBag.mensaje');
+    }
+
+    $(document).ready(function () {
+         $('input[type=datetime]').datepicker({
+             dateFormat: "dd/mm/yy",
+             minDate: 0,
+             changeMonth: true,
+             changeYear: true,
+             yearRange: "-0:+10"
+         });
+    });
+</script>
+    }

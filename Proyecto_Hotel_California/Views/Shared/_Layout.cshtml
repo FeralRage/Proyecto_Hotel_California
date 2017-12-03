@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Hoteles California</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+
+
+@{ UsuarioLog logueado = (UsuarioLog)Session["logueado"]; }
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("INICIO", "PaginaPrincipal", "HotelCalifornia", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+@if (logueado == null)
+{
+                    <li>
+                        @Html.ActionLink("Ver Habitaciones", "ListarHabitaciones", "HotelCalifornia")
+                    </li>
+}
+else
+{
+    if (logueado.tipoUsuario.Equals("Cliente"))
+    {
+                    <li>
+                        @Html.ActionLink("Reservar", "ListarHabitaciones", "HotelCalifornia")
+                    </li>
+    }
+    else
+    {
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/HotelCalifornia/PaginaPrincipal.cshtml">
+                            Reservas
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Crear Reserva", "ListarHabitaciones", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Cancelar Reserva", "ListarReservasxFiltro", "HotelCalifornia", routeValues: new { tipo = "cancel" }, htmlAttributes: null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Check-In", "ListarReservasxFiltro", "HotelCalifornia", routeValues: new { tipo = "checkin" }, htmlAttributes: null)
+                            </li>
+                            <li>
+                                @Html.ActionLink("Check-Out", "ListarReservasxFiltro", "HotelCalifornia", routeValues: new { tipo = "checkout" }, htmlAttributes: null)
+                            </li>
+        @if (logueado.tipoUsuario.Equals("Administrador"))
+        {
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Reserva", "ListarReservasMantenimiento", "HotelCalifornia", routeValues: new { tipo = "checkout" }, htmlAttributes: null)
+                            </li>
+        }
+                        </ul>
+                    </li>
+
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/HotelCalifornia/PaginaPrincipal.cshtml">
+                            Clientes
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Crear Cliente", "CrearCliente", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Crear Usuario", "CrearUsuarioManual", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Clientes", "ListarClientes", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Usuarios", "ListarUsuarios", "HotelCalifornia", routeValues: new { tipo = "cliente" }, htmlAttributes: null)
+                            </li>
+                        </ul>
+                    </li>
+
+        if (logueado.tipoUsuario.Equals("Administrador"))
+        {
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/HotelCalifornia/PaginaPrincipal.cshtml">
+                            Empleados
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Crear Empleado", "CrearEmpleado", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Empleados", "ListarEmpleados", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Usuarios", "ListarUsuarios", "HotelCalifornia", routeValues: new { tipo = "empleado" }, htmlAttributes: null)
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="dropdown active">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="~/Views/HotelCalifornia/PaginaPrincipal.cshtml">
+                            Habitaciones
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                @Html.ActionLink("Crear Habitación", "CrearHabitacion", "HotelCalifornia")
+                            </li>
+                            <li>
+                                @Html.ActionLink("Mantenimiento de Habitaciones", "ListarHabitacionesMantenimiento", "HotelCalifornia")
+                            </li>
+                        </ul>
+                    </li>
+        }
+    }
+}
+                    <li>@Html.ActionLink("Contáctenos", "Contact", "HotelCalifornia")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Todos los derechos reservados</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+
+    @Styles.Render("~/Content/cssjqryUi")
+    @Scripts.Render("~/bundles/extras")
+
+
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>
